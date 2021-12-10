@@ -1,0 +1,4 @@
+mm00107289@techmahindra.com
+Bindu2738!
+
+psql --host=techmserver-1.postgres.database.azure.com --port=5432 --username=techmuser1@techmserver-1 --dbname=postgres

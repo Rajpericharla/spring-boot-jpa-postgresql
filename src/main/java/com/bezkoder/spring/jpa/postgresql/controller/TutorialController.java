@@ -121,4 +121,21 @@ public class TutorialController {
 		}
 	}
 
+	@GetMapping("/insert-million")
+	public ResponseEntity<Tutorial> createBulkTutorial() {
+		try {
+			Tutorial _tutorial = new Tutorial();
+			for (int i = 1; i <= 1000000; i++) {
+				Tutorial tutorial = new Tutorial();
+				tutorial.setTitle("Spring Boot Tu#" + i);
+				tutorial.setDescription("Tu#" + i + " Description");
+				tutorialRepository
+						.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
+			}
+			_tutorial.setDescription("success");
+			return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }
